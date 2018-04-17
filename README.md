@@ -4,12 +4,12 @@ This documentation describes how to setup the ELK stack and the Apache access lo
 
 Launch an EC2 instance with Linux AMI 2017.09.01 and SSH to it.
 
-$ java -version
-$ sudo yum install java-1.8.0 -y
-$ sudo yum remove java-1.7.0-openjdk -y
-$ java -version
-$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-$ sudo vi /etc/yum.repos.d/logstash.repo
+$ java -version  
+$ sudo yum install java-1.8.0 -y  
+$ sudo yum remove java-1.7.0-openjdk -y  
+$ java -version  
+$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch  
+$ sudo vi /etc/yum.repos.d/logstash.repo  
 ```
 [logstash-6.x]
 name=Elastic repository for 6.x packages
@@ -20,11 +20,11 @@ enabled=1
 autorefresh=1
 type=rpm-md
 ```
-$ sudo yum install logstash -y
-$ cd /usr/share/logstash/
-$ ll
-$ sudo bin/logstash-plugin install logstash-output-amazon_es
-$ vi /etc/logstash/conf.d/logstash.conf
+$ sudo yum install logstash -y  
+$ cd /usr/share/logstash/  
+$ ll  
+$ sudo bin/logstash-plugin install logstash-output-amazon_es  
+$ vi /etc/logstash/conf.d/logstash.conf  
 ```
 input {
     file {
@@ -65,33 +65,35 @@ output {
 $ sudo bin/logstash -f /etc/logstash/conf.d/logstash.conf &
 
 ### Shutdown Logstash
-$ ps -ef | grep logstash
-$ sudo kill <process-id>
+$ ps -ef | grep logstash  
+$ sudo kill <process-id>  
 
 To know more about the filtering options in Logstash take a look at this documentation URL
+
 https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
 
 # Installation of Fake Apache Log Generation
 
 For simulating Apache access logs we are going to use the generator available below
+
 https://github.com/kiritbasu/Fake-Apache-Log-Generator
 
-$ sudo yum install git -y
-$ git clone https://github.com/kiritbasu/Fake-Apache-Log-Generator.git
-$ ll
-$ cd Fake-Apache-Log-Generator/
-$ ll
-$ sudo pip install -r requirements.txt
-$ python apache-fake-log-gen.py
-$ sudo mkdir -p /var/log/apache/
-$ sudo python apache-fake-log-gen.py -n 0 -s 1 -o LOG -p /var/log/apache/ &
-$ cd /var/log/apache/
-$ ls -alh
+$ sudo yum install git -y  
+$ git clone https://github.com/kiritbasu/Fake-Apache-Log-Generator.git  
+$ ll  
+$ cd Fake-Apache-Log-Generator/  
+$ ll  
+$ sudo pip install -r requirements.txt  
+$ python apache-fake-log-gen.py  
+$ sudo mkdir -p /var/log/apache/  
+$ sudo python apache-fake-log-gen.py -n 0 -s 1 -o LOG -p /var/log/apache/ &  
+$ cd /var/log/apache/  
+$ ls -alh  
 
 ### Shutdown
-$ ps -ef | grep python
-$ sudo kill <process-id>
-$ sudo rm -R /var/log/apache/*
+$ ps -ef | grep python  
+$ sudo kill <process-id>  
+$ sudo rm -R /var/log/apache/*  
 
 # Setup an AWS Elasticsearch Domain
 
@@ -166,17 +168,17 @@ After importing the visualisation JSON file if you see errors in your imported d
 
 Below is the list of visualisations that are created as part of this demo.
 
-Average Response Size in Bytes — Vertical Bar
-HTTP Response Codes over Time — Vertical Bar
-HTTP Response Status — Pie
-HTTP Response Status by OS — Pie
-HTTP Response Status by REST Calls — Pie
-HTTP Response Status by Web Browsers — Pie
-Response Time Statistic — Metric
-Web Access by User Devices — Vertical Bar
-Web Access Count — Metric
-Web Access Distribution — Region Map
-Web Access Geo-location — Coordinate Map
+Average Response Size in Bytes — Vertical Bar  
+HTTP Response Codes over Time — Vertical Bar  
+HTTP Response Status — Pie  
+HTTP Response Status by OS — Pie  
+HTTP Response Status by REST Calls — Pie  
+HTTP Response Status by Web Browsers — Pie  
+Response Time Statistic — Metric  
+Web Access by User Devices — Vertical Bar  
+Web Access Count — Metric  
+Web Access Distribution — Region Map  
+Web Access Geo-location — Coordinate Map  
 
 # Cleanup
 ```
