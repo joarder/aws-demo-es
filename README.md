@@ -197,7 +197,7 @@ GET _template/weblog?pretty
 DELETE _template/weblog?pretty
 ```
 # References
-https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
-https://www.elastic.co/blog/logstash_lesson_elasticsearch_mapping
-https://github.com/kiritbasu/Fake-Apache-Log-Generator
-https://github.com/awslabs/logstash-output-amazon_es
+https://www.elastic.co/guide/en/logstash/current/installing-logstash.html  
+https://www.elastic.co/blog/logstash_lesson_elasticsearch_mapping  
+https://github.com/kiritbasu/Fake-Apache-Log-Generator  
+https://github.com/awslabs/logstash-output-amazon_es  
