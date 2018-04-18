@@ -53,9 +53,9 @@ filter {
 
 output {
     amazon_es {
-      hosts => “<AWS-ES-DOMAIN-ENTPOINT-URL>"
+      hosts => "<AWS-ES-DOMAIN-ENTPOINT-URL>"
       port => "443"
-      region => “<AWS-REGION-ID>"
+      region => "<AWS-REGION-ID>"
       index => "weblog"
       document_type => "apache"
     }
