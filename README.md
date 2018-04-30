@@ -58,6 +58,7 @@ output {
       region => "<AWS-REGION-ID>"
       index => "weblog"
       document_type => "apache"
+      manage_template => false
     }
 }
 ```
